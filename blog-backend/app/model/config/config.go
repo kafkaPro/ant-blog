@@ -65,7 +65,7 @@ type Server struct {
 }
 
 type System struct {
-	Db            string `json:"db"`
+	Db            string `json:"database"`
 	Env           string `json:"env"`
 	OssType       string `json:"oss_type"`
 	ErrorToEmail  bool   `json:"error_to_email"`

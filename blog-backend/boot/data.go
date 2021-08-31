@@ -1,44 +1,44 @@
 package boot
 
 import (
-	"blog-backend/app/model/db"
+	"blog-backend/app/model/database"
 	"github.com/gogf/gf/frame/g"
 )
 
 func InitializeDataTableAndData() {
 	var err error
 	// 初始化表,如果出错则不会执行初始化数据
-	err = db.TableApis()
-	err = db.TableJwts()
-	err = db.TableMenus()
-	err = db.TableFiles()
-	err = db.TableAdmins()
-	err = db.TableCustomers()
-	err = db.TableCasbinRule()
-	err = db.TableOperations()
-	err = db.TableParameters()
-	err = db.TableAuthorities()
-	//err = db.TableSimpleUpload()
-	err = db.TableDictionaries()
-	err = db.TableAuthorityMenu()
-	err = db.TableBreakpointFiles()
-	err = db.TableBreakpointChucks()
-	err = db.TableDictionaryDetails()
-	err = db.TableAuthorityResources()
+	err = database.TableApis()
+	err = database.TableJwts()
+	err = database.TableMenus()
+	err = database.TableFiles()
+	err = database.TableAdmins()
+	err = database.TableCustomers()
+	err = database.TableCasbinRule()
+	err = database.TableOperations()
+	err = database.TableParameters()
+	err = database.TableAuthorities()
+	//err = database.TableSimpleUpload()
+	err = database.TableDictionaries()
+	err = database.TableAuthorityMenu()
+	err = database.TableBreakpointFiles()
+	err = database.TableBreakpointChucks()
+	err = database.TableDictionaryDetails()
+	err = database.TableAuthorityResources()
 	if err != nil {
 		g.Log().Error(err)
 		return
 	}
 	// 初始化数据,并且数据插入是10条10条这样插入的,每个表插入数据都有加事务
-	err = db.DataApis()
-	err = db.DataFiles()
-	err = db.DataMenus()
-	err = db.DataAdmins()
-	err = db.DataCasbinRule()
-	err = db.DataAuthorities()
-	err = db.DataDictionaries()
-	err = db.DataAuthorityMenus()
-	err = db.DataDictionaryDetails()
+	err = database.DataApis()
+	err = database.DataFiles()
+	err = database.DataMenus()
+	err = database.DataAdmins()
+	err = database.DataCasbinRule()
+	err = database.DataAuthorities()
+	err = database.DataDictionaries()
+	err = database.DataAuthorityMenus()
+	err = database.DataDictionaryDetails()
 	if err != nil {
 		g.Log().Error(err)
 		return

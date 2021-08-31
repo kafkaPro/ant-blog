@@ -1,4 +1,4 @@
-package config
+package casbin
 
 type CasbinModel struct {
 	ID          uint   `json:"id"`

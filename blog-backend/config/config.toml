@@ -1,0 +1,43 @@
+[server]
+	Address     = ":8199"
+	ServerRoot  = "public"
+	ServerAgent = "gf-app"
+	LogPath     = "D:/log/server"
+
+# Logger.
+[logger]
+    Path        = "D:/log/boot"
+    Level       = "all"
+    Stdout      = true
+
+# Database.
+# [database]
+#     link  = "mysql:root:CHINA19980223`@tcp(database:23156)/ant-blog"
+#     debug = true
+#     # Database logger.
+#     [database.logger]
+#         Path   = "D:/log/database"
+#         Level  = "all"
+#         Stdout = true
+[database]
+    [database.default]
+        Host = "database"
+        Port = 23156
+        User = "root"
+        Pass = "CHINA19980223`"
+        Name = "ant-blog"
+        Type = "mysql"
+        Role = ""
+        Debug = true
+        Prefix = ""
+        DryRun = ""
+        Charset = "utf8mb4"
+        Weight = ""
+        MaxIdle = ""
+        MaxOpen = ""
+        MaxLifetime = ""
+
+[[gfcli]]
+    [[gfcli.gen.dao]]
+        link = "mysql:root:CHINA19980223`@tcp(database:23156)/ant-blog"
+        tables = ""

@@ -1,0 +1,7 @@
+# 系统配置
+[system]
+    Db = "default"
+    Env = "public"  # 如果设置为 "develop" 则会跳过鉴权
+    OssType = "local"
+    ErrorToEmail = false
+    UseMultipoint = true

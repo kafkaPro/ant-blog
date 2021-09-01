@@ -36,14 +36,14 @@ func TestFindAdmin(t *testing.T) {
 
 func TestAdminLogin(t *testing.T) {
 	req := request.AdminLoginReq{
-		Username: "admin",
+		Username: "adminxxxx",
 		Password: "1234567",
 	}
 	data, err := service.LoginService.AdminLogin(context.TODO(), &req)
 	if err == nil {
 		fmt.Println(data)
 	} else {
-		fmt.Println("登录失败")
+		fmt.Println(err.Error())
 	}
 }
 

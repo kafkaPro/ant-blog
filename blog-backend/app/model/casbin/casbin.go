@@ -1,9 +1,9 @@
 package casbin
 
 type CasbinModel struct {
-	ID          uint   `json:"id"`
-	Ptype       string `json:"ptype"`
-	AuthorityId string `json:"rolename"`
-	Path        string `json:"path"`
-	Method      string `json:"method"`
+	ID     uint   `json:"id"`
+	Ptype  string `json:"ptype"`
+	RoleId uint   `json:"roleId"`
+	Path   string `json:"path"`
+	Method string `json:"method"`
 }

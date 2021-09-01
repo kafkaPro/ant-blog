@@ -1,0 +1,2 @@
+[casbin]
+    ModelPath = "../public/rbac_model.conf"

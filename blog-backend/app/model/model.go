@@ -10,16 +10,16 @@ import (
 
 // Admins is the golang structure for table admins.
 type Admins struct {
-	Id          uint        `orm:"id,primary"   json:"id"`          // 自增ID
-	CreateAt    *gtime.Time `orm:"create_at"    json:"createAt"`    // 创建时间
-	UpdateAt    *gtime.Time `orm:"update_at"    json:"updateAt"`    // 更新时间
-	DeleteAt    *gtime.Time `orm:"delete_at"    json:"deleteAt"`    // 删除时间
-	Uuid        string      `orm:"uuid"         json:"uuid"`        // 用户唯一标识UUID
-	Nickname    string      `orm:"nickname"     json:"nickname"`    // 用户昵称
-	HeaderImg   string      `orm:"header_img"   json:"headerImg"`   // 用户头像
-	AuthorityId string      `orm:"authority_id" json:"authorityId"` // 用户角色ID
-	Username    string      `orm:"username"     json:"username"`    // 用户名
-	Password    string      `orm:"password"     json:"password"`    // 用户登录密码
+	Id        uint        `orm:"id,primary" json:"id"`        // 自增ID
+	CreateAt  *gtime.Time `orm:"create_at"  json:"createAt"`  // 创建时间
+	UpdateAt  *gtime.Time `orm:"update_at"  json:"updateAt"`  // 更新时间
+	DeleteAt  *gtime.Time `orm:"delete_at"  json:"deleteAt"`  // 删除时间
+	Uuid      string      `orm:"uuid"       json:"uuid"`      // 用户唯一标识UUID
+	Nickname  string      `orm:"nickname"   json:"nickname"`  // 用户昵称
+	HeaderImg string      `orm:"header_img" json:"headerImg"` // 用户头像
+	RoleId    uint        `orm:"role_id"    json:"roleId"`    // 用户角色ID
+	Username  string      `orm:"username"   json:"username"`  // 用户名
+	Password  string      `orm:"password"   json:"password"`  // 用户登录密码
 }
 
 // Apis is the golang structure for table apis.
@@ -32,28 +32,6 @@ type Apis struct {
 	Description string      `orm:"description" json:"description"` // api中文描述
 	ApiGroup    string      `orm:"api_group"   json:"apiGroup"`    // api组
 	Method      string      `orm:"method"      json:"method"`      // 方法
-}
-
-// Authorities is the golang structure for table authorities.
-type Authorities struct {
-	AuthorityId   string      `orm:"authority_id,primary" json:"authorityId"`   // 角色ID
-	AuthorityName string      `orm:"authority_name"       json:"authorityName"` // 角色名
-	ParentId      string      `orm:"parent_id"            json:"parentId"`      // 父角色ID
-	CreateAt      *gtime.Time `orm:"create_at"            json:"createAt"`      // 创建时间
-	UpdateAt      *gtime.Time `orm:"update_at"            json:"updateAt"`      // 更新时间
-	DeleteAt      *gtime.Time `orm:"delete_at"            json:"deleteAt"`      // 删除时间
-}
-
-// AuthorityMenu is the golang structure for table authority_menu.
-type AuthorityMenu struct {
-	AuthorityId string `orm:"authority_id" json:"authorityId"` // 权限id
-	MenuId      string `orm:"menu_id"      json:"menuId"`      // 菜单id
-}
-
-// AuthorityResources is the golang structure for table authority_resources.
-type AuthorityResources struct {
-	AuthorityId string `orm:"authority_id" json:"authorityId"` // 权限id
-	ResourcesId string `orm:"resources_id" json:"resourcesId"` // 资源id
 }
 
 // BreakpointChucks is the golang structure for table breakpoint_chucks.
@@ -94,14 +72,14 @@ type CasbinRule struct {
 
 // Customers is the golang structure for table customers.
 type Customers struct {
-	Id                 uint        `orm:"id,primary"            json:"id"`                 // 自增ID
-	CreateAt           *gtime.Time `orm:"create_at"             json:"createAt"`           // 创建时间
-	UpdateAt           *gtime.Time `orm:"update_at"             json:"updateAt"`           // 更新时间
-	DeleteAt           *gtime.Time `orm:"delete_at"             json:"deleteAt"`           // 删除时间
-	CustomerName       string      `orm:"customer_name"         json:"customerName"`       // 客户名
-	CustomerPhoneData  string      `orm:"customer_phone_data"   json:"customerPhoneData"`  // 客户电话
-	SysUserId          uint        `orm:"sys_user_id"           json:"sysUserId"`          // 负责员工id
-	SysUserAuthorityId string      `orm:"sys_user_authority_id" json:"sysUserAuthorityId"` // 负责员工角色
+	Id                uint        `orm:"id,primary"          json:"id"`                // 自增ID
+	CreateAt          *gtime.Time `orm:"create_at"           json:"createAt"`          // 创建时间
+	UpdateAt          *gtime.Time `orm:"update_at"           json:"updateAt"`          // 更新时间
+	DeleteAt          *gtime.Time `orm:"delete_at"           json:"deleteAt"`          // 删除时间
+	CustomerName      string      `orm:"customer_name"       json:"customerName"`      // 客户名
+	CustomerPhoneData string      `orm:"customer_phone_data" json:"customerPhoneData"` // 客户电话
+	SysUserId         uint        `orm:"sys_user_id"         json:"sysUserId"`         // 负责员工id
+	SysUserRoleId     string      `orm:"sys_user_role_id"    json:"sysUserRoleId"`     // 负责员工角色
 }
 
 // Dictionaries is the golang structure for table dictionaries.
@@ -157,7 +135,7 @@ type Menus struct {
 	UpdateAt    *gtime.Time `orm:"update_at"    json:"updateAt"`    // 更新时间
 	DeleteAt    *gtime.Time `orm:"delete_at"    json:"deleteAt"`    // 删除时间
 	MenuLevel   uint        `orm:"menu_level"   json:"menuLevel"`   // 菜单等级(预留字段)
-	ParentId    string      `orm:"parent_id"    json:"parentId"`    // 父菜单ID
+	ParentId    uint        `orm:"parent_id"    json:"parentId"`    // 父菜单ID
 	Path        string      `orm:"path"         json:"path"`        // 路由path
 	Name        string      `orm:"name"         json:"name"`        // 路由name
 	Hidden      int         `orm:"hidden"       json:"hidden"`      // 是否在列表隐藏
@@ -197,4 +175,26 @@ type Parameters struct {
 	Type       string      `orm:"type"         json:"type"`       // 地址栏携带参数为params还是query
 	Key        string      `orm:"key"          json:"key"`        // 地址栏携带参数的key
 	Value      string      `orm:"value"        json:"value"`      // 地址栏携带参数的值
+}
+
+// Role is the golang structure for table role.
+type Role struct {
+	RoleId   uint        `orm:"role_id,primary" json:"roleId"`   // 角色ID
+	RoleName string      `orm:"role_name"       json:"roleName"` // 角色名
+	ParentId uint        `orm:"parent_id"       json:"parentId"` // 父角色ID
+	CreateAt *gtime.Time `orm:"create_at"       json:"createAt"` // 创建时间
+	UpdateAt *gtime.Time `orm:"update_at"       json:"updateAt"` // 更新时间
+	DeleteAt *gtime.Time `orm:"delete_at"       json:"deleteAt"` // 删除时间
+}
+
+// RoleMenu is the golang structure for table role_menu.
+type RoleMenu struct {
+	RoleId uint `orm:"role_id" json:"roleId"` // 权限id
+	MenuId uint `orm:"menu_id" json:"menuId"` // 菜单id
+}
+
+// RoleResources is the golang structure for table role_resources.
+type RoleResources struct {
+	RoleId      uint `orm:"role_id"      json:"roleId"`      // 权限id
+	ResourcesId uint `orm:"resources_id" json:"resourcesId"` // 资源id
 }

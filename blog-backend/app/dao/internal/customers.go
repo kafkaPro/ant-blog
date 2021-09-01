@@ -19,26 +19,26 @@ type CustomersDao struct {
 
 // CustomersColumns defines and stores column names for table customers.
 type CustomersColumns struct {
-	Id                 string // 自增ID
-	CreateAt           string // 创建时间
-	UpdateAt           string // 更新时间
-	DeleteAt           string // 删除时间
-	CustomerName       string // 客户名
-	CustomerPhoneData  string // 客户电话
-	SysUserId          string // 负责员工id
-	SysUserAuthorityId string // 负责员工角色
+	Id                string // 自增ID
+	CreateAt          string // 创建时间
+	UpdateAt          string // 更新时间
+	DeleteAt          string // 删除时间
+	CustomerName      string // 客户名
+	CustomerPhoneData string // 客户电话
+	SysUserId         string // 负责员工id
+	SysUserRoleId     string // 负责员工角色
 }
 
 //  customersColumns holds the columns for table customers.
 var customersColumns = CustomersColumns{
-	Id:                 "id",
-	CreateAt:           "create_at",
-	UpdateAt:           "update_at",
-	DeleteAt:           "delete_at",
-	CustomerName:       "customer_name",
-	CustomerPhoneData:  "customer_phone_data",
-	SysUserId:          "sys_user_id",
-	SysUserAuthorityId: "sys_user_authority_id",
+	Id:                "id",
+	CreateAt:          "create_at",
+	UpdateAt:          "update_at",
+	DeleteAt:          "delete_at",
+	CustomerName:      "customer_name",
+	CustomerPhoneData: "customer_phone_data",
+	SysUserId:         "sys_user_id",
+	SysUserRoleId:     "sys_user_role_id",
 }
 
 // NewCustomersDao creates and returns a new DAO object for table data access.

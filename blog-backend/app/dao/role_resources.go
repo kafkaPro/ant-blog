@@ -8,16 +8,16 @@ import (
 	"blog-backend/app/dao/internal"
 )
 
-// authorityResourcesDao is the manager for logic model data accessing and custom defined data operations functions management.
+// roleResourcesDao is the manager for logic model data accessing and custom defined data operations functions management.
 // You can define custom methods on it to extend its functionality as you wish.
-type authorityResourcesDao struct {
-	*internal.AuthorityResourcesDao
+type roleResourcesDao struct {
+	*internal.RoleResourcesDao
 }
 
 var (
-	// AuthorityResources is globally public accessible object for table authority_resources operations.
-	AuthorityResources = authorityResourcesDao{
-		internal.NewAuthorityResourcesDao(),
+	// RoleResources is globally public accessible object for table role_resources operations.
+	RoleResources = roleResourcesDao{
+		internal.NewRoleResourcesDao(),
 	}
 )
 

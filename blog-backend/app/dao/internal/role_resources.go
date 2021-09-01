@@ -10,41 +10,41 @@ import (
 	"github.com/gogf/gf/frame/g"
 )
 
-// AuthorityMenuDao is the manager for logic model data accessing and custom defined data operations functions management.
-type AuthorityMenuDao struct {
+// RoleResourcesDao is the manager for logic model data accessing and custom defined data operations functions management.
+type RoleResourcesDao struct {
 	Table   string               // Table is the underlying table name of the DAO.
 	Group   string               // Group is the database configuration group name of current DAO.
-	Columns AuthorityMenuColumns // Columns is the short type for Columns, which contains all the column names of Table for convenient usage.
+	Columns RoleResourcesColumns // Columns is the short type for Columns, which contains all the column names of Table for convenient usage.
 }
 
-// AuthorityMenuColumns defines and stores column names for table authority_menu.
-type AuthorityMenuColumns struct {
-	AuthorityId string // 权限id
-	MenuId      string // 菜单id
+// RoleResourcesColumns defines and stores column names for table role_resources.
+type RoleResourcesColumns struct {
+	RoleId      string // 权限id
+	ResourcesId string // 资源id
 }
 
-//  authorityMenuColumns holds the columns for table authority_menu.
-var authorityMenuColumns = AuthorityMenuColumns{
-	AuthorityId: "authority_id",
-	MenuId:      "menu_id",
+//  roleResourcesColumns holds the columns for table role_resources.
+var roleResourcesColumns = RoleResourcesColumns{
+	RoleId:      "role_id",
+	ResourcesId: "resources_id",
 }
 
-// NewAuthorityMenuDao creates and returns a new DAO object for table data access.
-func NewAuthorityMenuDao() *AuthorityMenuDao {
-	return &AuthorityMenuDao{
+// NewRoleResourcesDao creates and returns a new DAO object for table data access.
+func NewRoleResourcesDao() *RoleResourcesDao {
+	return &RoleResourcesDao{
 		Group:   "default",
-		Table:   "authority_menu",
-		Columns: authorityMenuColumns,
+		Table:   "role_resources",
+		Columns: roleResourcesColumns,
 	}
 }
 
 // DB retrieves and returns the underlying raw database management object of current DAO.
-func (dao *AuthorityMenuDao) DB() gdb.DB {
+func (dao *RoleResourcesDao) DB() gdb.DB {
 	return g.DB(dao.Group)
 }
 
 // Ctx creates and returns the Model for current DAO, It automatically sets the context for current operation.
-func (dao *AuthorityMenuDao) Ctx(ctx context.Context) *gdb.Model {
+func (dao *RoleResourcesDao) Ctx(ctx context.Context) *gdb.Model {
 	return dao.DB().Model(dao.Table).Safe().Ctx(ctx)
 }
 
@@ -54,6 +54,6 @@ func (dao *AuthorityMenuDao) Ctx(ctx context.Context) *gdb.Model {
 //
 // Note that, you should not Commit or Rollback the transaction in function f
 // as it is automatically handled by this function.
-func (dao *AuthorityMenuDao) Transaction(ctx context.Context, f func(ctx context.Context, tx *gdb.TX) error) (err error) {
+func (dao *RoleResourcesDao) Transaction(ctx context.Context, f func(ctx context.Context, tx *gdb.TX) error) (err error) {
 	return dao.Ctx(ctx).Transaction(ctx, f)
 }

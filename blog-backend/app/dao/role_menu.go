@@ -8,16 +8,16 @@ import (
 	"blog-backend/app/dao/internal"
 )
 
-// authorityMenuDao is the manager for logic model data accessing and custom defined data operations functions management.
+// roleMenuDao is the manager for logic model data accessing and custom defined data operations functions management.
 // You can define custom methods on it to extend its functionality as you wish.
-type authorityMenuDao struct {
-	*internal.AuthorityMenuDao
+type roleMenuDao struct {
+	*internal.RoleMenuDao
 }
 
 var (
-	// AuthorityMenu is globally public accessible object for table authority_menu operations.
-	AuthorityMenu = authorityMenuDao{
-		internal.NewAuthorityMenuDao(),
+	// RoleMenu is globally public accessible object for table role_menu operations.
+	RoleMenu = roleMenuDao{
+		internal.NewRoleMenuDao(),
 	}
 )
 

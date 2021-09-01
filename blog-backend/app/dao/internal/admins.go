@@ -19,30 +19,30 @@ type AdminsDao struct {
 
 // AdminsColumns defines and stores column names for table admins.
 type AdminsColumns struct {
-	Id          string // 自增ID
-	CreateAt    string // 创建时间
-	UpdateAt    string // 更新时间
-	DeleteAt    string // 删除时间
-	Uuid        string // 用户唯一标识UUID
-	Nickname    string // 用户昵称
-	HeaderImg   string // 用户头像
-	AuthorityId string // 用户角色ID
-	Username    string // 用户名
-	Password    string // 用户登录密码
+	Id        string // 自增ID
+	CreateAt  string // 创建时间
+	UpdateAt  string // 更新时间
+	DeleteAt  string // 删除时间
+	Uuid      string // 用户唯一标识UUID
+	Nickname  string // 用户昵称
+	HeaderImg string // 用户头像
+	RoleId    string // 用户角色ID
+	Username  string // 用户名
+	Password  string // 用户登录密码
 }
 
 //  adminsColumns holds the columns for table admins.
 var adminsColumns = AdminsColumns{
-	Id:          "id",
-	CreateAt:    "create_at",
-	UpdateAt:    "update_at",
-	DeleteAt:    "delete_at",
-	Uuid:        "uuid",
-	Nickname:    "nickname",
-	HeaderImg:   "header_img",
-	AuthorityId: "authority_id",
-	Username:    "username",
-	Password:    "password",
+	Id:        "id",
+	CreateAt:  "create_at",
+	UpdateAt:  "update_at",
+	DeleteAt:  "delete_at",
+	Uuid:      "uuid",
+	Nickname:  "nickname",
+	HeaderImg: "header_img",
+	RoleId:    "role_id",
+	Username:  "username",
+	Password:  "password",
 }
 
 // NewAdminsDao creates and returns a new DAO object for table data access.

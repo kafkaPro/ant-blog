@@ -1,0 +1,9 @@
+[gtoken]
+    [gtoken.admin]
+        CacheMode = 1
+        CacheKey = "AdminToken"
+        Timeout = 3600000
+        MaxRefresh = 360000
+        AllowMultiLogin = true
+        TokenDelimiter="_"
+        EncryptKey = "koi29a83idakguqjq29asd9asd8a7jhq"

@@ -35,11 +35,13 @@ var (
 		AuthAfterFunc:    AdminAuthApi.AuthAfter,
 		AuthFailMsg:      "该请求无权限",
 		// token相关配置
-		CacheMode:  int8(g.Cfg("gtoken").GetInt("gtoken.admin.CacheMode")),
-		CacheKey:   g.Cfg("gtoken").GetString("gtoken.admin.CacheKey"),
-		Timeout:    g.Cfg("gtoken").GetInt("gtoken.admin.Timeout"),
-		MultiLogin: g.Cfg("gtoken").GetBool("gtoken.admin.AllowMultiLogin"),
-		MaxRefresh: g.Cfg("gtoken").GetInt("gtoken.admin.MaxRefresh"),
+		CacheMode:      int8(g.Cfg("gtoken").GetInt("gtoken.admin.CacheMode")),
+		CacheKey:       g.Cfg("gtoken").GetString("gtoken.admin.CacheKey"),
+		Timeout:        g.Cfg("gtoken").GetInt("gtoken.admin.Timeout"),
+		MultiLogin:     g.Cfg("gtoken").GetBool("gtoken.admin.AllowMultiLogin"),
+		MaxRefresh:     g.Cfg("gtoken").GetInt("gtoken.admin.MaxRefresh"),
+		TokenDelimiter: g.Cfg("gtoken").GetString("gtoken.admin.TokenDelimiter"),
+		EncryptKey:     g.Cfg("gtoken").GetBytes("gtoken.admin.EncryptKey"),
 	}
 )
 
@@ -81,13 +83,13 @@ func (api *adminAuthApi) LoginBefore(r *ghttp.Request) (string, interface{}) {
 	}
 
 	// 再验证captcha验证码
-	if !service.LoginService.Verify(ctx, req.CaptchaId, req.Captcha) {
-		c.FailWithMessage(r, "验证码输入错误")
-		loginLogData.Status = 0
-		loginLogData.Msg = "登陆失败"
-		_ = service.LoginLogService.AsyncSaveLoginLog(ctx, &loginLogData)
-		return "", nil
-	}
+	//if !service.LoginService.Verify(ctx, req.CaptchaId, req.Captcha) {
+	//	c.FailWithMessage(r, "验证码输入错误")
+	//	loginLogData.Status = 0
+	//	loginLogData.Msg = "登陆失败"
+	//	_ = service.LoginLogService.AsyncSaveLoginLog(ctx, &loginLogData)
+	//	return "", nil
+	//}
 
 	loginLogData.Status = 1
 	loginLogData.Msg = "登录成功"

@@ -6,6 +6,7 @@ import (
 	"github.com/casbin/casbin/v2/model"
 	"github.com/casbin/casbin/v2/persist"
 	"github.com/gogf/gf/database/gdb"
+	"github.com/gogf/gf/frame/g"
 	"runtime"
 )
 
@@ -66,11 +67,14 @@ func NewAdapter(driverName string, dataSourceName string) (*Adapter, error) {
 func NewAdapterByConfig() (a *Adapter, err error) {
 	a = &Adapter{}
 	a.tableName = "casbin_rule"
-	a.db, err = gdb.New(database.Db)
-	if err := a.createTable(); err != nil {
-		return a, err
-	}
-	// Call the destructor when the object is released.
+	a.driverName = "mysql"
+	a.dataSourceName = "root:CHINA19980223`@tcp(database:23156)/ant-blog"
+	//a.db, err = gdb.New(database.Db)
+	//if err := a.createTable(); err != nil {
+	//	return a, err
+	//}
+	a.db = g.DB(database.Db)
+	//// Call the destructor when the object is released.
 	runtime.SetFinalizer(a, finalizer)
 	return a, nil
 }
@@ -183,9 +187,10 @@ func loadPolicyLine(rule CasbinRule, model model.Model) {
 // LoadPolicy loads policy from database.
 // LoadPolicy 从数据库加载策略。
 func (a *Adapter) LoadPolicy(model model.Model) error {
-	lines := ([]CasbinRule)(nil)
+	//lines := ([]CasbinRule)(nil)
+	var lines []CasbinRule
 
-	if err := a.db.Table(a.tableName).Scan(&lines); err != nil {
+	if err := a.db.Model(a.tableName).Scan(&lines); err != nil {
 		return err
 	}
 
@@ -235,7 +240,7 @@ func (a *Adapter) SavePolicy(model model.Model) error {
 	for ptype, ast := range model["p"] {
 		for _, rule := range ast.Policy {
 			line := savePolicyLine(ptype, rule)
-			_, err := a.db.Table(a.tableName).Data(&line).Insert()
+			_, err := a.db.Model(a.tableName).Data(&line).Insert()
 			if err != nil {
 				return err
 			}

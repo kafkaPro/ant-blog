@@ -19,7 +19,7 @@ var (
 
 func (s *onlineUserService) AsyncSaveOnlineUser(ctx context.Context, data *model.OnlineUser) {
 	_ = s.Pool.Add(func() {
-		s.DoSaveOnlineUser(ctx, data)
+		s.DoSaveOnlineUser(context.TODO(), data)
 	})
 }
 

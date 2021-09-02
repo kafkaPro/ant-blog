@@ -21,11 +21,13 @@ func AdminCtx(r *ghttp.Request) {
 	// 获取登录的返回结果
 	adminData := &system.AdminHasOneRole{}
 	respData := v1.AdminGfToken.GetTokenData(r)
-	if err := gconv.Struct(respData.Get("data"), &adminData); err != nil {
-		g.Log().Info("设置admin信息到Context中失败")
+	if respData.Get("data") != nil {
+		if err := gconv.Struct(respData.Get("data"), &adminData); err != nil {
+			g.Log().Info("设置admin信息到Context中失败")
+		}
 	}
 
-	if adminData != nil {
+	if adminData != nil && adminData.Admin != nil && adminData.Role != nil {
 		adminCtx.User = &service.ContextAdmin{
 			Id:        adminData.Admin.Id,
 			UserName:  adminData.Admin.Username,

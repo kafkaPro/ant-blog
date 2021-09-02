@@ -1,2 +1,2 @@
 [casbin]
-    ModelPath = "../public/rbac_model.conf"
+    ModelPath = "D:/Github/repo/ant-blog/blog-backend/public/rbac_model.conf"

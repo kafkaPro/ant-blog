@@ -128,6 +128,19 @@ type Jwts struct {
 	Jwt      string      `orm:"jwt"        json:"jwt"`      // jwt
 }
 
+// LoginLog is the golang structure for table login_log.
+type LoginLog struct {
+	Id            uint        `orm:"id,primary"     json:"id"`            //
+	UserName      string      `orm:"user_name"      json:"userName"`      // 登录用户名
+	Ip            string      `orm:"ip"             json:"ip"`            // 登录ip地址
+	Browser       string      `orm:"browser"        json:"browser"`       // 登录的浏览器
+	Os            string      `orm:"os"             json:"os"`            // 登录的操作系统类型，默认Windows
+	Status        int         `orm:"status"         json:"status"`        // 登录结果(0->失败,1->成功)
+	Msg           string      `orm:"msg"            json:"msg"`           // 登录结果信息(例如:登录成功)
+	LoginLocation string      `orm:"login_location" json:"loginLocation"` //
+	LoginTime     *gtime.Time `orm:"login_time"     json:"loginTime"`     // 登录时间
+}
+
 // Menus is the golang structure for table menus.
 type Menus struct {
 	Id          uint        `orm:"id,primary"   json:"id"`          // 自增ID
@@ -145,6 +158,32 @@ type Menus struct {
 	Sort        int         `orm:"sort"         json:"sort"`        // 排序标记
 	KeepAlive   int         `orm:"keep_alive"   json:"keepAlive"`   // 是否缓存
 	DefaultMenu int         `orm:"default_menu" json:"defaultMenu"` // 是否是基础路由(开发中)
+}
+
+// OnlineUser is the golang structure for table online_user.
+type OnlineUser struct {
+	Id        uint        `orm:"id,primary" json:"id"`        //
+	Uuid      string      `orm:"uuid"       json:"uuid"`      // 用户的uuid
+	Username  string      `orm:"username"   json:"username"`  // 在线用户名
+	Token     string      `orm:"token"      json:"token"`     // 在线用户token
+	Explorer  string      `orm:"explorer"   json:"explorer"`  // 在线用户浏览器类型
+	Os        string      `orm:"os"         json:"os"`        // 在线用户的操作系统类型
+	LoginTime *gtime.Time `orm:"login_time" json:"loginTime"` //
+	IsAdmin   int         `orm:"is_admin"   json:"isAdmin"`   // 是否是管理员
+}
+
+// OperateLog is the golang structure for table operate_log.
+type OperateLog struct {
+	Id            uint        `orm:"id,primary"     json:"id"`            //
+	Module        string      `orm:"module"         json:"module"`        // 操作的模块的名称
+	OptType       int         `orm:"opt_type"       json:"optType"`       // 操作类型(0->其他, 1->新增, 2->修改, 3->删除)
+	OptPerson     string      `orm:"opt_person"     json:"optPerson"`     // 操作员姓名
+	Ip            string      `orm:"ip"             json:"ip"`            // ip地址
+	RequestUrl    string      `orm:"request_url"    json:"requestUrl"`    // 请求的URL
+	RequestMethod string      `orm:"request_method" json:"requestMethod"` // 请求方法名
+	RequestParam  string      `orm:"request_param"  json:"requestParam"`  // 请求的参数
+	Status        int         `orm:"status"         json:"status"`        // 操作状态(0->正常, 1->异常)
+	OptTime       *gtime.Time `orm:"opt_time"       json:"optTime"`       //
 }
 
 // Operations is the golang structure for table operations.

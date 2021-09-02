@@ -79,3 +79,7 @@ func (s *loginService) Captcha(ctx context.Context) (id string, b64Str string, e
 	id, b64Str, err = cp.Generate()
 	return
 }
+
+func (s *loginService) Verify(ctx context.Context, id, answer string) bool {
+	return s.Store.Verify(id, answer, false)
+}
